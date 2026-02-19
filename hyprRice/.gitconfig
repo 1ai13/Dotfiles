@@ -1,1 +1,7 @@
-/home/unai/.gitconfig
+[user]
+	name = Unai Gonzalez Sanchez
+	email = unaigsanchez@gmail.com
+[init]
+	defaultBranch = main
+[credential]
+	helper = store

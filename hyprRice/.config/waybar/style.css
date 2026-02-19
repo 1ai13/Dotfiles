@@ -1,0 +1,161 @@
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    font-family: Adwaita Sans;
+    font-size: 13px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Main bar container */
+window#waybar {
+    background: transparent;      
+    color: #e0e0e0;
+}
+
+menu {
+    background: rgba(30,30,30,.9);
+    border: 1px solid #a11212;
+    color: #f0e0e0;
+    border-radius: 3px;
+}
+
+menuitem {
+    padding: 4px;
+    color: #d8d0d0;
+    transition: all 0.2s ease;
+    border-radius: 3px;
+}
+
+menuitem:hover{
+    background: #8B0000;
+    color: black;
+}
+
+menuitem:active {
+    background: #c0392b;
+}
+
+separator{
+  background-color:red;
+}
+
+tooltip{
+  border: 1px solid red;
+  border-radius: 4px;
+  background: rgba(30,30,30,.9);
+}
+
+#custom-power{
+  background: rgba(190, 0,0, 1);
+  padding: 2px 18px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  margin-right: 2px;
+}
+#custom-power:hover{
+  background: rgba(220, 0,0, 1);
+  color: black;
+}
+#custom-power.tooltip:hover{
+  background: rgba(220, 0,0, 1);
+}
+
+#workspaces{
+  background: rgba(150,0,0, 1);
+  border-radius: 20px;
+  border: 1.25px solid black;
+  padding: 1px 1.33rem;
+}
+
+#workspaces button{
+  border: 1.5px solid black;
+  border-radius: 10px;
+  background: rgba(95,95,95,.8); 
+  margin: 0px 8px;
+  font-size: 4px;
+}
+
+#workspaces button.empty{
+  background: rgba(50,50,50,.8); 
+}
+
+#workspaces button:hover{
+  background: rgba(180,180,255,1);
+}
+
+#workspaces button.active{
+  background: rgba(255,255,255,1);
+}
+
+#clock,#network,#wireplumber,#custom-pacman{
+  background: rgba(125,30,30,.2);
+  border-left: 1px solid red;
+  padding: 0px 10px;
+  color:white;
+  transition: all 0.2s ease;
+
+}
+#clock:hover,#network:hover,#wireplumber:hover,#custom-pacman:hover{
+  background: #8B0000;
+    color: black;
+
+}
+#custom-pacman, #network, #clock, #wireplumber{
+  padding-right: 14px;
+}
+
+#wireplumber.source{
+  padding-right:10px;
+}
+
+#wireplumber.source{
+  border-left: 0;
+}
+#wireplumber.sink-muted{
+  color: gray;  
+}
+
+#cpu,#memory,#disk,#custom-nvidia{
+  padding: 2px 10px;
+  color: white; 
+  transition: background 0.3s ease;
+  min-width: 45px;
+}
+
+#cpu {
+    background: rgba(130, 180, 240, 0.80);   
+}
+
+#memory {
+    background: rgba(220, 200, 120, 0.78);   
+}
+
+#disk {
+    background: rgba(220, 50, 100, 0.78);  
+}
+
+#custom-nvidia {
+    background: rgba(180, 225, 170, 0.82);   
+}
+
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#custom-nvidia:hover {
+    background: rgba(155, 155, 155, 0.5);     
+    border-color: #a11212;
+    border: 0.5px solid red;
+}
+
+#cpu.warn,#disk.warn,#memory.warn{
+  background: rgba(255, 180, 80, 0.92);
+  color:black;
+}
+
+#cpu.crit,#disk.crit,#memory.crit{
+  background: rgba(255, 70, 80, 0.92);
+  color:black;
+}
+

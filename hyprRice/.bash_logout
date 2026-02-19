@@ -1,1 +1,5 @@
-/home/unai/.bash_logout
+#
+# ~/.bash_logout
+#
+clear
+reset

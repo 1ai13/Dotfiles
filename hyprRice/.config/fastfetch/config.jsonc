@@ -1,0 +1,155 @@
+// Load with --config examples/2.jsonc
+// Note that you must replace the image path to an existing image to display it.
+
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "padding": {
+            "top": 5,
+            "left": 3
+        },
+        "color":{
+            "1":"red"
+        },
+        "source": "~/Documents/ascii-logo.txt"
+    },
+    "display": {
+        "separator": " -> ",
+        "constants": [
+            "──────────────────────────────"
+        ],
+        "color": {
+          "title": "red"     // Title color
+        }
+    },
+    "modules": [
+        {
+            "type": "custom",
+            "format": "┌{$1}{$1}┐",
+            "outputColor": "90"
+        },
+        {
+            "type": "title",
+            "keyWidth": 10,
+            "keyColor": "red"
+        },
+        {
+            "type": "custom",
+            "format": "└{$1}{$1}┘",
+            "outputColor": "90"
+        },
+        {
+            "type": "custom",
+            "format": " {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39}       {#38}  {#37}  {#36}  {#35}  {#34}  {#33}  {#32}  {#31}  {#90} "
+        },
+        {
+            "type": "custom",
+            "format": "┌{$1}{$1}┐",
+            "outputColor": "90"
+        },
+        {
+            "type": "os",
+            "key": "{icon} OS",
+            "keyColor": "yellow",
+            "format": "{pretty-name}"
+        },
+        {
+            "type": "kernel",
+            "key": "│ ├",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "packages",
+            "key": "│ ├󰏖",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "shell",
+            "key": "│ └",
+            "keyColor": "yellow"
+        },
+        {
+	          "key": "│ └󰅐",
+    	      "type": "disk",
+	          "keyColor": "yellow",
+	          "folders": "/",
+	          "format": "{create-time:10} ({days} days)"
+	      },
+        {
+            "type": "wm",
+            "key": " WM",
+            "keyColor": "blue"
+        },
+        {
+            "type": "lm",
+            "key": "│ ├󰧨",
+            "keyColor": "blue"
+        },
+        {
+            "type": "icons",
+            "key": "│ ├󰀻",
+            "keyColor": "blue"
+        },
+        {
+            "type": "terminal",
+            "key": "│ ├",
+            "keyColor": "blue"
+        },
+        {
+            "type": "custom",
+            "key": "󰌢 PC",
+            "keyColor": "green",
+            "format": "DUAL BOOT Win/Lin"
+        },
+        {
+            "type": "cpu",
+            "key": "│ ├󰻠",
+            "keyColor": "green"
+        },
+        {
+            "type": "gpu",
+            "key": "│ ├󰍛",
+            "keyColor": "green"
+        },
+        {
+            "type": "board",
+            "key": "│ ├",
+            "keyColor": "green"
+        },
+        {
+            "type": "memory",
+            "key": "│ ├󰑭",
+            "keyColor": "green"
+        },
+        {
+            "type": "editor",
+            "key": "│ ├",
+            "keyColor": "green"
+        },
+        {
+            "type": "uptime",
+            "key": "│ ├󰅐",
+            "keyColor": "green"
+        },
+        {
+            "type": "custom",
+            "key": "󰖩 NET",
+            "keyColor": "cyan",
+            "format": "Ethernet"
+        },
+        {
+            "type": "localip",
+            "key": "│ ├",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "custom",
+            "format": "└{$1}{$1}┘",
+            "outputColor": "90"
+        },
+        {
+            "type": "custom",
+            "format": " {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39}       {#38}  {#37}  {#36}  {#35}  {#34}  {#33}  {#32}  {#31}  {#90} "
+        }
+    ]
+}
