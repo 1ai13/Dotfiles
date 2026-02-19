@@ -1,0 +1,1 @@
+/home/unai/Desktop/scripts/fastf-anim.sh
