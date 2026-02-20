@@ -1,5 +1,5 @@
 
-updates=$(sudo pacman -Sup --print-format "%n - %v")
+updates=$(sudo pacman -Syup --print-format "%n - %v")
 tooltip="No updates available"
 count="0"
 if [[ $updates != "" ]]; then
