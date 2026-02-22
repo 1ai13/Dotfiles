@@ -6,4 +6,11 @@ return {
 	symbols = {
 		filter = { "String", exclude = true },
 	},
+	outline_window = {
+		width = 20,
+		auto_width = {
+			enabled = true,
+			max_width = 20,
+		},
+	},
 }

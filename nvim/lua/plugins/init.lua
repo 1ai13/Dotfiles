@@ -9,6 +9,12 @@
 -- If you have no custom plugins yet, NvChad requires this file to return an empty table.
 return {
 	{
+		"lazy.nvim",
+		opts = {
+			library = { "nvim-dap-ui" },
+		},
+	},
+	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("plugins.configs.lspconfig")
@@ -51,7 +57,12 @@ return {
 		end,
 	},
 	{
+		"nvim-tree/nvim-tree.lua",
+		opts = require("plugins.configs.filetree"),
+	},
+	{
 		"hedyhli/outline.nvim",
+		event = "User PersistenceLoadPre",
 		cmd = { "Outline", "OutlineOpen" },
 		opts = require("plugins.configs.outliner"),
 	},
@@ -63,5 +74,35 @@ return {
 		},
 		lazy = false,
 		opts = require("plugins.configs.refactor"),
+	},
+	{
+		"folke/persistence.nvim",
+		event = "BufReadPre",
+		opts = {},
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = require("plugins.configs.git"),
+	},
+	{
+		"mfussenegger/nvim-dap",
+		"nvim-neotest/nvim-nio",
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		event = "VeryLazy",
+		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+		opts = require("plugins.configs.dap-ui"),
+	},
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		event = "VeryLazy",
+		dependencies = { "mason-org/mason.nvim", "mfussenegger/nvim-dap" },
+		cmd = { "DapInstall", "DapUninstall" },
+		opts = {
+			automatic_installation = true,
+			handlers = {},
+			ensure_installed = { "codelldb" },
+		},
 	},
 }
