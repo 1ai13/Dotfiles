@@ -9,6 +9,21 @@
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias ga='git add .'
+alias gcm='git commit -m'
+gacp(){
+  read -p "Commit message: " value
+  git add .
+  git commit -m "$value"
+  git push
+}
+alias cmc='cmake -S . -B build -G Ninja'
+cmct(){
+  read -p "Build type: " type
+  cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE="$type"
+}
+alias cmb='ninja -C build'
+
 
 PS1='\[\e[1;36m\]\u\[\e[33m\] | \[\e[1;32m\]\W\[\e[1;33m\] ➤\[\e[0m\] '
 PS2='\[\e[1;32m\] → \[\e[0m\] '
