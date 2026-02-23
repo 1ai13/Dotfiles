@@ -1,5 +1,3 @@
-BasedOnStyle: Chromium
-PointerAlignment: Left
 ---
 Language:        Cpp
 AccessModifierOffset: -1
