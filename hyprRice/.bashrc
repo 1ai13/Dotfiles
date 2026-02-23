@@ -23,7 +23,7 @@ cmct(){
   cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE="$type"
 }
 alias cmb='ninja -C build'
-
+alias cmr='ninja -C build -t clean'
 
 PS1='\[\e[1;36m\]\u\[\e[33m\] | \[\e[1;32m\]\W\[\e[1;33m\] ➤\[\e[0m\] '
 PS2='\[\e[1;32m\] → \[\e[0m\] '
