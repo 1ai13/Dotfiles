@@ -60,3 +60,10 @@ end, { desc = "load last session" })
 vim.keymap.set("n", "çD", function()
 	require("persistence").stop()
 end, { desc = "Stop saving session" })
+
+--SIGNATURE HELPER
+vim.keymap.set({ "i" }, "<C-g>", function()
+	require("lsp_signature").toggle_float_win()
+end, { silent = true, noremap = true, desc = "Toggle signature" })
+
+vim.keymap.del("i", "<C-s>")

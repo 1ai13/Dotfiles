@@ -51,10 +51,45 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		dependencies = { "hrsh7th/cmp-emoji" },
+		dependencies = {
+			"hrsh7th/cmp-emoji",
+			-- , "hrsh7th/cmp-nvim-lsp-signature-help"
+		},
 		opts = function(_, opts)
+			local cmp = require("cmp")
 			table.insert(opts.sources, { name = "emoji" })
+			-- table.insert(opts.sources, { name = "nvim_lsp_signature_help" })
+			opts.window = {
+				completion = cmp.config.window.bordered({
+					border = "rounded",
+					winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
+				}),
+				documentation = cmp.config.window.bordered({
+					border = "rounded",
+					winhighlight = "Normal:CmpDoc,FloatBorder:CmpDocBorder",
+				}),
+			}
+			opts.performance = {
+				max_view_entries = 20,
+			}
 		end,
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "InsertEnter",
+		opts = {
+			bind = true,
+			handler_opts = {
+				border = "rounded",
+			},
+			floating_window = true,
+			hint_enable = false,
+			hint_prefix = {
+				above = "↙ ", -- when the hint is on the line above the current line
+				current = "← ", -- when the hint is on the same line
+				below = "↖ ", -- when the hint is on the line below the current line
+			},
+		},
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
