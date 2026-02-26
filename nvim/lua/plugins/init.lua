@@ -63,14 +63,12 @@ return {
 				completion = cmp.config.window.bordered({
 					border = "rounded",
 					winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
+					max_height = 15,
 				}),
 				documentation = cmp.config.window.bordered({
 					border = "rounded",
 					winhighlight = "Normal:CmpDoc,FloatBorder:CmpDocBorder",
 				}),
-			}
-			opts.performance = {
-				max_view_entries = 20,
 			}
 		end,
 	},
