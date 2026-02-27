@@ -29,9 +29,17 @@ project_builder() {
   if [ -d "$path" ]; then
     echo "Directory already exists" >&2; exit 1;
   fi
+
   mkdir -p "$path/"{src,build}
   touch "$path/src/main.cpp"
-  echo -e "addProject($name)\n\naddExecutable($name src/main.cpp)" > "$path/CMakeLists.txt"
+  echo -e "project($name)\n\nadd_executable($name src/main.cpp)" > "$path/CMakeLists.txt"
+
+  local format_file="$HOME/Dev/dotfiles/templates/cpp/.clang-format"
+  if [ -f "$format_file" ]; then
+    ln -sr "$format_file" "$path/.clang-format"
+  else
+    echo "Clang format file not found"
+  fi
 }
 
 case "$type" in
