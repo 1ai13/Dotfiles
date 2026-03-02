@@ -43,4 +43,23 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+qn(){
+  if [ -z "$1" ]; then
+    echo "No quick notes provided" >&2
+  else
+  if [ ! -f "$HOME/Documents/quick_notes.txt" ]; then
+    echo -e "Notes file not found...\nCreating file at ~/Documents/quick_notes.txt"
+  fi
+  echo -e "$1\n------------------------------------\n" >> $HOME/Documents/quick_notes.txt
+  fi
+}
+
+proj-gen(){
+  if [ ! -f "$HOME/Templates/project_builder.sh" ]; then
+    echo "Project generator not found"
+  else
+    $HOME/Templates/project_builder.sh "$@"
+  fi
+}
+
 [[ ${BLE_VERSION-} ]] && ble-attach
