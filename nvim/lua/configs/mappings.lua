@@ -120,7 +120,7 @@ vim.keymap.set({ "i", "v", "n" }, "<F7>", function()
 	end
 	local dir = vim.fn.getcwd()
 	local dir_name = vim.fn.fnamemodify(dir, ":t")
-	vim.fn.chansend(job, "build/debug" .. dir_name .. "\n")
+	vim.fn.chansend(job, "build/debug/" .. dir_name .. "\n")
 end)
 
 vim.keymap.set({ "i", "v", "n" }, "<F8>", function()
@@ -139,5 +139,5 @@ vim.keymap.set({ "i", "v", "n" }, "<F8>", function()
 	end
 	local dir = vim.fn.getcwd()
 	local dir_name = vim.fn.fnamemodify(dir, ":t")
-	vim.fn.chansend(job, "build/release" .. dir_name .. "\n")
+	vim.fn.chansend(job, "build/release/" .. dir_name .. "\n")
 end)
