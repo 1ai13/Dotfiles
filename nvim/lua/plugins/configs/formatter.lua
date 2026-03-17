@@ -5,7 +5,6 @@ return {
 		html = { "prettier" },
 		css = { "prettier" },
 		cpp = { "clang-format" },
-		cmake = { "cmake_format" },
 	},
 	-- Set default options
 	default_format_opts = {

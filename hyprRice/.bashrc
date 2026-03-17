@@ -17,13 +17,16 @@ gacp(){
   git commit -m "$value"
   git push
 }
-alias cmc='cmake -S . -B build -G Ninja'
-cmct(){
-  read -p "Build type: " type
-  cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE="$type"
+
+alias cmcd='cmake -S . -B build/debug -G Ninja -DCMAKE_BUILD_TYPE=Debug'
+alias cmcr='cmake -S . -B build/release -G Ninja -DCMAKE_BUILD_TYPE=Release'
+cmc(){
+  cmcd
+  cmcr
 }
-alias cmb='ninja -C build'
-alias cmr='ninja -C build -t clean'
+alias cmbd='ninja -C build/debug'
+alias cmbr='ninja -C build/release'
+alias cmcl='ninja -C build -t clean'
 
 PS1='\[\e[1;36m\]\u\[\e[33m\] | \[\e[1;32m\]\W\[\e[1;33m\] ➤\[\e[0m\] '
 PS2='\[\e[1;32m\] → \[\e[0m\] '

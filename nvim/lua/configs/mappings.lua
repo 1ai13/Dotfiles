@@ -18,13 +18,13 @@ vim.keymap.set("n", "<leader>dc", function()
 	require("refactoring").debug.cleanup({})
 end, { desc = "Clear prints" })
 
-vim.keymap.set("n", "<F8>", function()
+vim.keymap.set("n", "<F9>", function()
 	require("dap").toggle_breakpoint()
 end, { desc = "Toggle breakpoint" })
-vim.keymap.set("n", "<F10>", function()
+vim.keymap.set("n", "<F11>", function()
 	require("dap").terminate()
 end, { desc = "Terminate debugger" })
-vim.keymap.set("n", "<F9>", function()
+vim.keymap.set("n", "<F10>", function()
 	require("dap").continue()
 end, { desc = "Start debugger" })
 vim.keymap.set("n", "<leader>dac", function()
@@ -84,10 +84,27 @@ vim.keymap.set({ "i", "v", "n" }, "<F5>", function()
 			end,
 		})
 	end
-	vim.fn.chansend(job, "cmb\n")
+	vim.fn.chansend(job, "cmbd\n")
 end)
 
 vim.keymap.set({ "i", "v", "n" }, "<F6>", function()
+	if term == nil then
+		vim.cmd("new | terminal")
+		vim.bo.buflisted = false
+		term = vim.api.nvim_get_current_buf()
+		job = vim.b.terminal_job_id
+		vim.api.nvim_create_autocmd("BufWinLeave", {
+			buffer = term,
+			callback = function()
+				term = nil
+				job = nil
+			end,
+		})
+	end
+	vim.fn.chansend(job, "cmbr\n")
+end)
+
+vim.keymap.set({ "i", "v", "n" }, "<F7>", function()
 	if term == nil or not vim.api.nvim_buf_is_valid(term) then
 		vim.cmd("new | terminal")
 		vim.bo.buflisted = false
@@ -103,5 +120,24 @@ vim.keymap.set({ "i", "v", "n" }, "<F6>", function()
 	end
 	local dir = vim.fn.getcwd()
 	local dir_name = vim.fn.fnamemodify(dir, ":t")
-	vim.fn.chansend(job, "build/" .. dir_name .. "\n")
+	vim.fn.chansend(job, "build/debug" .. dir_name .. "\n")
+end)
+
+vim.keymap.set({ "i", "v", "n" }, "<F8>", function()
+	if term == nil or not vim.api.nvim_buf_is_valid(term) then
+		vim.cmd("new | terminal")
+		vim.bo.buflisted = false
+		term = vim.api.nvim_get_current_buf()
+		job = vim.b.terminal_job_id
+		vim.api.nvim_create_autocmd("BufWinLeave", {
+			buffer = term,
+			callback = function()
+				term = nil
+				job = nil
+			end,
+		})
+	end
+	local dir = vim.fn.getcwd()
+	local dir_name = vim.fn.fnamemodify(dir, ":t")
+	vim.fn.chansend(job, "build/release" .. dir_name .. "\n")
 end)
