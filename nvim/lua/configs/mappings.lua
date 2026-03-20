@@ -84,10 +84,10 @@ vim.keymap.set({ "i", "v", "n" }, "<F5>", function()
 			end,
 		})
 	end
-	vim.fn.chansend(job, "cmbd\n")
+	vim.fn.chansend(job, "clear; cmbd\n")
 end)
 
-vim.keymap.set({ "i", "v", "n" }, "<F6>", function()
+vim.keymap.set({ "i", "v", "n" }, "<F7>", function()
 	if term == nil then
 		vim.cmd("new | terminal")
 		vim.bo.buflisted = false
@@ -101,10 +101,10 @@ vim.keymap.set({ "i", "v", "n" }, "<F6>", function()
 			end,
 		})
 	end
-	vim.fn.chansend(job, "cmbr\n")
+	vim.fn.chansend(job, "clear; cmbr\n")
 end)
 
-vim.keymap.set({ "i", "v", "n" }, "<F7>", function()
+vim.keymap.set({ "i", "v", "n" }, "<F6>", function()
 	if term == nil or not vim.api.nvim_buf_is_valid(term) then
 		vim.cmd("new | terminal")
 		vim.bo.buflisted = false
