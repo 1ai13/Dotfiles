@@ -32,7 +32,8 @@ project_builder() {
 
   mkdir -p "$path/"{src,build}
   touch "$path/src/main.cpp"
-  echo -e "project($name)\n\nset(CMAKE_CXX_STANDARD_REQUIRED ON)\nset(CMAKE_EXPORT_COMPILE_COMMANDS ON)\nset(CMAKE_CXX_SCAN_FOR_MODULES OFF)\n\nadd_executable($name src/main.cpp)" > "$path/CMakeLists.txt"
+  echo -e "project($name)\n\nset(CMAKE_CXX_STANDARD_REQUIRED ON)\nset(CMAKE_EXPORT_COMPILE_COMMANDS ON)\nset(CMAKE_CXX_SCAN_FOR_MODULES OFF)
+\n\nadd_executable($name src/main.cpp)" > "$path/CMakeLists.txt"
 
   local format_file="$HOME/Templates/cpp/.clang-format"
   if [ -f "$format_file" ]; then
