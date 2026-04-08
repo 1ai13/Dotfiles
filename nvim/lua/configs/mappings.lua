@@ -72,7 +72,7 @@ local term = nil
 local job = nil
 vim.keymap.set({ "i", "v", "n" }, "<F5>", function()
 	if term == nil then
-		vim.cmd("new | terminal")
+		vim.cmd("20new | terminal")
 		vim.bo.buflisted = false
 		term = vim.api.nvim_get_current_buf()
 		job = vim.b.terminal_job_id
@@ -89,7 +89,7 @@ end)
 
 vim.keymap.set({ "i", "v", "n" }, "<F7>", function()
 	if term == nil then
-		vim.cmd("new | terminal")
+		vim.cmd("20new | terminal")
 		vim.bo.buflisted = false
 		term = vim.api.nvim_get_current_buf()
 		job = vim.b.terminal_job_id
@@ -106,7 +106,7 @@ end)
 
 vim.keymap.set({ "i", "v", "n" }, "<F6>", function()
 	if term == nil or not vim.api.nvim_buf_is_valid(term) then
-		vim.cmd("new | terminal")
+		vim.cmd("20new | terminal")
 		vim.bo.buflisted = false
 		term = vim.api.nvim_get_current_buf()
 		job = vim.b.terminal_job_id
@@ -125,7 +125,7 @@ end)
 
 vim.keymap.set({ "i", "v", "n" }, "<F8>", function()
 	if term == nil or not vim.api.nvim_buf_is_valid(term) then
-		vim.cmd("new | terminal")
+		vim.cmd("20new | terminal")
 		vim.bo.buflisted = false
 		term = vim.api.nvim_get_current_buf()
 		job = vim.b.terminal_job_id
