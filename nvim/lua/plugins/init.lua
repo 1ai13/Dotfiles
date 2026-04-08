@@ -64,6 +64,7 @@ return {
 					border = "rounded",
 					winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
 					max_height = 15,
+					max_width = 15,
 				}),
 				documentation = cmp.config.window.bordered({
 					border = "rounded",
@@ -93,12 +94,12 @@ return {
 		"nvim-tree/nvim-tree.lua",
 		opts = require("plugins.configs.filetree"),
 	},
-	{
-		"hedyhli/outline.nvim",
-		event = "User PersistenceLoadPre",
-		cmd = { "Outline", "OutlineOpen" },
-		opts = require("plugins.configs.outliner"),
-	},
+	-- {
+	-- 	"hedyhli/outline.nvim",
+	-- 	event = "User PersistenceLoadPre",
+	-- 	cmd = { "Outline", "OutlineOpen" },
+	-- 	opts = require("plugins.configs.outliner"),
+	-- },
 	{
 		"ThePrimeagen/refactoring.nvim",
 		dependencies = {
