@@ -100,15 +100,15 @@ return {
 	-- 	cmd = { "Outline", "OutlineOpen" },
 	-- 	opts = require("plugins.configs.outliner"),
 	-- },
-	{
-		"ThePrimeagen/refactoring.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		lazy = false,
-		opts = require("plugins.configs.refactor"),
-	},
+	-- {
+	-- 	"ThePrimeagen/refactoring.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- 	lazy = false,
+	-- 	opts = require("plugins.configs.refactor"),
+	-- },
 	{
 		"folke/persistence.nvim",
 		event = "BufReadPre",

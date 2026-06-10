@@ -3,5 +3,5 @@ deps = []
 
 [[flavor.deps]]
 use = "hankertrix/bluloco-yazi:bluloco-dark"
-rev = "dc47a6d"
-hash = "aaa55b7bf1fa60e9da0df36e0771b610"
+rev = "1570591"
+hash = "785adf9c5354cae15136b414262d026f"
