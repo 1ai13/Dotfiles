@@ -75,7 +75,7 @@ include current-theme.conf
 
 #:     narrow_symbols codepoints [optionally the number of cells]
 
-  disable_ligatures never
+# disable_ligatures never
 
 #: Choose how you want to handle multi-character ligatures. The
 #: default is to always render them. You can tell kitty to not render
@@ -101,7 +101,7 @@ include current-theme.conf
 #: that for the main fonts, features can be specified when selecting
 #: the font using the choose-fonts kitten. This setting is useful for
 #: fallback fonts.
-
+a
 #: Some fonts might have features worthwhile in a terminal. For
 #: example, Fira Code includes a discretionary feature, zero, which in
 #: that font changes the appearance of the zero (0), to make it more
@@ -181,10 +181,10 @@ include current-theme.conf
 # undercurl_style thin-sparse
 
 #: The style with which undercurls are rendered. This option takes the
-#: form (thin|thick)-(sparse|dense). Thin and thick control the
+#: form (thin|thick)-(sparse|dense). Thin and thick control thea
 #: thickness of the undercurl. Sparse and dense control how often the
 #: curl oscillates. With sparse the curl will peak once per character,
-#: with dense twice. Changing this option dynamically via reloading
+#: with dense twice. Changing this option dynamically via reloadingaa
 #: the config or remote control is undefined.
 
 # underline_exclusion 1
@@ -199,7 +199,7 @@ include current-theme.conf
 #: or remote control is undefined.
 
 # text_composition_strategy platform
-
+a
 #: Control how kitty composites text glyphs onto the background color.
 #: The default value of platform tries for text rendering as close to
 #: "native" for the platform kitty is running on as possible.
@@ -2995,3 +2995,13 @@ include current-theme.conf
 #: }}}
 
 #: }}}
+
+
+# BEGIN_KITTY_FONTS
+font_family      family="JetBrainsMono Nerd Font"
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+
+font_size 11.0
+# END_KITTY_FONTS

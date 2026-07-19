@@ -7,17 +7,29 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+PATH="$HOME/Dev/bin:$PATH"
+
+#Promt customization
+PS1='\[\e[1;36m\]\u\[\e[33m\] | \[\e[1;32m\]\W\[\e[1;33m\] ➤\[\e[0m\] '
+PS2='\[\e[1;32m\] → \[\e[0m\] '
+
+complete -cf sudo
+
+#Basic alias
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+
 alias ga='git add .'
 alias gcm='git commit -m'
-gacp(){
-  read -p "Commit message: " value
+gcpush(){
   git add .
-  git commit -m "$value"
+  git commit -m "$1"
   git push
 }
 
+alias projgen='project_builder'
+
+#CMAKE commands
 alias cmcd='cmake -S . -B build/debug -G Ninja -DCMAKE_BUILD_TYPE=Debug'
 alias cmcr='cmake -S . -B build/release -G Ninja -DCMAKE_BUILD_TYPE=Release'
 cmc(){
@@ -28,12 +40,7 @@ alias cmbd='ninja -C build/debug'
 alias cmbr='ninja -C build/release'
 alias cmcl='ninja -C build -t clean'
 
-PS1='\[\e[1;36m\]\u\[\e[33m\] | \[\e[1;32m\]\W\[\e[1;33m\] ➤\[\e[0m\] '
-PS2='\[\e[1;32m\] → \[\e[0m\] '
-
-complete -cf sudo
-
-
+#Helpers
 whatsize(){
     du -h --max-depth=1 --exclude=/{proc,sys,dev,run} -t 1 ${1:-/} 2>/dev/null | sort -hr
 }
@@ -54,14 +61,6 @@ qn(){
     echo -e "Notes file not found...\nCreating file at ~/Documents/quick_notes.txt"
   fi
   echo -e "$1\n------------------------------------\n" >> $HOME/Documents/quick_notes.txt
-  fi
-}
-
-proj-gen(){
-  if [ ! -f "$HOME/Templates/project_builder.sh" ]; then
-    echo "Project generator not found"
-  else
-    $HOME/Templates/project_builder.sh "$@"
   fi
 }
 

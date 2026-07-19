@@ -1,4 +1,7 @@
-#Template project generator
+#!/bin/bash
+# project_builder Template Project generator
+#
+# project_builder [ProjectName]
 set -euo pipefail
 
 name="Project"
