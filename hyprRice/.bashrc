@@ -32,13 +32,22 @@ alias projgen='project_builder'
 #CMAKE commands
 alias cmcd='cmake -S . -B build/debug -G Ninja -DCMAKE_BUILD_TYPE=Debug'
 alias cmcr='cmake -S . -B build/release -G Ninja -DCMAKE_BUILD_TYPE=Release'
-cmc(){
+alias cmcl='ninja -C build -t clean'
+cmcfg(){
   cmcd
   cmcr
 }
-alias cmbd='ninja -C build/debug'
-alias cmbr='ninja -C build/release'
-alias cmcl='ninja -C build -t clean'
+
+build(){
+  local type="${1:-debug}"
+  ninja -C "build/$type"
+}
+
+run(){
+  local type="${1:-debug}"
+  local exe="$(basename $PWD)"
+  ./build/$type/$exe
+}
 
 #Helpers
 whatsize(){

@@ -84,7 +84,7 @@ vim.keymap.set({ "i", "v", "n" }, "<F5>", function()
 			end,
 		})
 	end
-	vim.fn.chansend(job, "clear; cmbd\n")
+	vim.fn.chansend(job, "clear; build\n")
 end)
 
 vim.keymap.set({ "i", "v", "n" }, "<F7>", function()
@@ -101,7 +101,7 @@ vim.keymap.set({ "i", "v", "n" }, "<F7>", function()
 			end,
 		})
 	end
-	vim.fn.chansend(job, "clear; cmbr\n")
+	vim.fn.chansend(job, "clear; build release\n")
 end)
 
 vim.keymap.set({ "i", "v", "n" }, "<F6>", function()
@@ -118,9 +118,7 @@ vim.keymap.set({ "i", "v", "n" }, "<F6>", function()
 			end,
 		})
 	end
-	local dir = vim.fn.getcwd()
-	local dir_name = vim.fn.fnamemodify(dir, ":t")
-	vim.fn.chansend(job, "build/debug/" .. dir_name .. "\n")
+	vim.fn.chansend(job, "run\n")
 end)
 
 vim.keymap.set({ "i", "v", "n" }, "<F8>", function()
@@ -137,7 +135,5 @@ vim.keymap.set({ "i", "v", "n" }, "<F8>", function()
 			end,
 		})
 	end
-	local dir = vim.fn.getcwd()
-	local dir_name = vim.fn.fnamemodify(dir, ":t")
-	vim.fn.chansend(job, "build/release/" .. dir_name .. "\n")
+	vim.fn.chansend(job, "run release\n")
 end)
