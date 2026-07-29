@@ -20,7 +20,11 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 gcpush(){
-  read -p "Commit message:\n" msg 
+  while true; do
+    read -p "Commit message: " msg 
+    [[ -n "$msg" ]] && break
+    echo "Message can't be empty"
+  done
   git add .
   git commit -m "$msg"
   git push
