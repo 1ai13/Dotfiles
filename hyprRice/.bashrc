@@ -7,11 +7,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PATH="$HOME/Dev/bin:$PATH"
+export PATH="$HOME/Dev/bin:$PATH"
 
 #Promt customization
-PS1='\[\e[1;36m\]\u\[\e[33m\] | \[\e[1;32m\]\W\[\e[1;33m\] ➤\[\e[0m\] '
-PS2='\[\e[1;32m\] → \[\e[0m\] '
+export PS1='\[\e[1;36m\]\u\[\e[33m\] | \[\e[1;32m\]\W\[\e[1;33m\] ➤\[\e[0m\] '
+export PS2='\[\e[1;32m\] → \[\e[0m\] '
 
 complete -cf sudo
 
@@ -19,11 +19,10 @@ complete -cf sudo
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-alias ga='git add .'
-alias gcm='git commit -m'
 gcpush(){
+  read -p "Commit message:\n" msg 
   git add .
-  git commit -m "$1"
+  git commit -m "$msg"
   git push
 }
 
@@ -46,7 +45,7 @@ build(){
 run(){
   local type="${1:-debug}"
   local exe="$(basename $PWD)"
-  ./build/$type/$exe
+  "./build/$type/$exe"
 }
 
 #Helpers

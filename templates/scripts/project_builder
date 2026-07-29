@@ -1,8 +1,9 @@
 #!/bin/bash
-# project_builder Template Project generator
 #
-# project_builder [ProjectName]
-set -euo pipefail
+# Template Project generator
+#
+
+set -eo pipefail
 
 name="Project"
 
@@ -12,10 +13,10 @@ while getopts ":n:" opt; do
       name="$OPTARG"
       ;;
     \?) 
-      echo "Option invalid" >&2; exit 1
+      echo "Option invalid" >&2;
       ;;
     :)
-      echo "Option -$OPTARG missing data" >&2; exit 1
+      echo "Option -$OPTARG missing data" >&2;
       ;;
   esac
 done
