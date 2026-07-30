@@ -1,0 +1,77 @@
+#!/bin/bash
+#
+# Manager for building and running projects
+#
+
+helper(){
+  cat <<END
+Usage: runner [OPTIONS] [BUILD_DIR]
+
+  Description: 
+    Builder and runner manager.
+    If BUILD_DIR is omitted, the /build directory will be searched in the current directory.
+    If -b and -r are omitted, the default behaviour is build & run.
+
+  Options:
+    -b                    Build the project
+    -r                    Run the executable
+    -t {debug,release}    Type of build/run  (default: debug)
+    -h                    Show this help
+
+
+  Examples:
+    runner [-b] "Example/dir/build"
+    runner -r -t release
+    runner "Example/build"
+END
+}
+
+quit(){
+  printf "%s\n" "$1" >&2; exit 1
+}
+
+build=false
+run=false
+
+while getopts ":brt:h" opt; do
+  case "$opt" in
+    h) helper
+    ;;
+    t) type="$OPTARG"
+    ;;
+    b) build=true
+    ;;
+    r) run=true
+    ;;
+    :) quit "Option -$OPTARG missing data"
+    ;;
+    \:) quit "Invalid option provided"
+    ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+build_dir=${1:-$PWD/build}
+cwd=${build_dir%/build*}
+
+build(){
+  ninja -C "$build_dir/${type-debug}"
+}
+
+run(){
+  local exe="$(basename $cwd)" #Executable follows the Project name convention
+  "$build_dir/${type:-debug}/$exe"
+}
+
+if $build; then
+  build
+fi
+
+if $run; then
+  run
+fi
+
+#Build & Run if not flags set
+if ! $build && ! $run; then
+  build && run
+fi

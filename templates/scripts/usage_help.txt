@@ -1,0 +1,10 @@
+Usage: SCRIPT_NAME [OPTIONS]
+
+  Description: 
+    Basic script description
+
+  Options:
+    -h [OPTIONAL] <file>    Show this help (default: VALUE)
+
+  Examples:
+    script_name -h

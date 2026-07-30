@@ -27,7 +27,7 @@ end, { desc = "Terminate debugger" })
 vim.keymap.set("n", "<F10>", function()
 	require("dap").continue()
 end, { desc = "Start debugger" })
-vim.keymap.set("n", "<leader>dac", function()
+vim.keymap.set("n", "<leader>dbc", function()
 	require("dap").clear_breakpoints()
 end, { desc = "Clear breakpoints" })
 
@@ -84,7 +84,7 @@ vim.keymap.set({ "i", "v", "n" }, "<F5>", function()
 			end,
 		})
 	end
-	vim.fn.chansend(job, "clear; build\n")
+	vim.fn.chansend(job, "clear; runner -b\n")
 end)
 
 vim.keymap.set({ "i", "v", "n" }, "<F7>", function()
@@ -101,7 +101,7 @@ vim.keymap.set({ "i", "v", "n" }, "<F7>", function()
 			end,
 		})
 	end
-	vim.fn.chansend(job, "clear; build release\n")
+	vim.fn.chansend(job, "clear; runner -b -t release\n")
 end)
 
 vim.keymap.set({ "i", "v", "n" }, "<F6>", function()
@@ -118,7 +118,7 @@ vim.keymap.set({ "i", "v", "n" }, "<F6>", function()
 			end,
 		})
 	end
-	vim.fn.chansend(job, "run\n")
+	vim.fn.chansend(job, "runner -r\n")
 end)
 
 vim.keymap.set({ "i", "v", "n" }, "<F8>", function()
@@ -135,5 +135,5 @@ vim.keymap.set({ "i", "v", "n" }, "<F8>", function()
 			end,
 		})
 	end
-	vim.fn.chansend(job, "run release\n")
+	vim.fn.chansend(job, "runner -r -t release\n")
 end)

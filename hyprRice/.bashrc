@@ -18,6 +18,7 @@ complete -cf sudo
 #Basic alias
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias projgen='project_generator'
 
 gcpush(){
   while true; do
@@ -30,8 +31,6 @@ gcpush(){
   git push
 }
 
-alias projgen='project_builder'
-
 #CMAKE commands
 alias cmcd='cmake -S . -B build/debug -G Ninja -DCMAKE_BUILD_TYPE=Debug'
 alias cmcr='cmake -S . -B build/release -G Ninja -DCMAKE_BUILD_TYPE=Release'
@@ -39,17 +38,6 @@ alias cmcl='ninja -C build -t clean'
 cmcfg(){
   cmcd
   cmcr
-}
-
-build(){
-  local type="${1:-debug}"
-  ninja -C "build/$type"
-}
-
-run(){
-  local type="${1:-debug}"
-  local exe="$(basename $PWD)"
-  "./build/$type/$exe"
 }
 
 #Helpers
@@ -66,14 +54,11 @@ function y() {
 }
 
 qn(){
-  if [ -z "$1" ]; then
-    echo "No quick notes provided" >&2
-  else
-  if [ ! -f "$HOME/Documents/quick_notes.txt" ]; then
-    echo -e "Notes file not found...\nCreating file at ~/Documents/quick_notes.txt"
-  fi
+  [[ -z "$1" ]] && quit "No quick notes provided"
+
+  [[ ! -f "$HOME/Documents/quick_notes.txt" ]] && echo -e "Notes file not found...\nCreating file at ~/Documents/quick_notes.txt"
+
   echo -e "$1\n------------------------------------\n" >> $HOME/Documents/quick_notes.txt
-  fi
 }
 
 [[ ${BLE_VERSION-} ]] && ble-attach

@@ -1,0 +1,103 @@
+#!/bin/bash
+#
+# Template Project generator
+#
+
+helper(){
+  cat <<END
+  Usage: project_builder [OPTIONS] [OUTPUT_DIR]
+
+  Description: 
+    Generates a basic project setup based on the type chosen.
+    If OUTPUT_DIR is omitted the current working directory is used.
+
+  Options:
+    -n <NAME>     Project name (default: Project) 
+    -h            Show this help
+
+  Examples:
+    project_builder -n "Example Project"
+    project_builder -n "Example Project" "../Example/dir"
+END
+}
+
+quit(){
+  printf "%s\n" "$1" >&2; exit 1
+}
+
+generate_config(){
+  local path="$1"
+  local ext="$2"
+  local lang="$3"
+  local modules=""
+  [[ $lang = "CXX" ]] && modules="set(CMAKE_CXX_SCAN_FOR_MODULES OFF)"
+
+  cat > "$path/CMakeLists.txt" <<END
+project($project)
+
+set(CMAKE_${lang}_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+$modules
+
+add_executable($project src/main.$ext)
+END
+
+  local format_file="$HOME/Templates/cpp/.clang-format"
+  if [[ -f "$format_file" ]]; then
+    ln -sr "$format_file" "$path/.clang-format"
+  else
+    echo "Clang format file not found"
+  fi
+}
+
+project_builder() {
+  local path="$base_dir/$project"
+  local ext
+  [[ -d "$path" ]] && quit "Duplicated project found"
+  mkdir -p "$path/"{src,build}
+
+  case "$type" in
+    "C")
+      ext="c"
+      generate_config "$path" $ext "C"
+      
+    ;;
+    "C++")
+      ext="cpp"
+      generate_config "$path" $ext "CXX"
+    ;;
+  esac
+
+  touch "$path/src/main.$ext"
+}
+
+project="Project"
+
+while getopts ":hn:" opt; do
+  case $opt in
+    h)
+      helper
+      exit 0;
+      ;;
+    n)
+      project="$OPTARG"
+      ;;
+    :)
+      quit "Option -$OPTARG missing data"
+      ;;
+    \?) 
+      quit "Invalid option provided"
+      ;;
+  esac
+done
+shift $((OPTIND -1))
+
+base_dir="${1:-.}"
+PS3="Select the project type: "
+
+select type in C C++; do
+  [[ -n $type ]] && break;
+  echo "Invalid type, select a proper one" >&2;
+done
+
+project_builder
